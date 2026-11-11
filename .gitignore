@@ -1,0 +1,36 @@
+# Data (competition data is not redistributed)
+data/*
+!data/.gitkeep
+*.csv
+!sample_*.csv
+
+# Generated outputs
+submissions/*
+!submissions/.gitkeep
+submission*.csv
+catboost_info/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Models / artifacts
+*.pkl
+*.joblib
+*.model
+
+# Optuna
+*.db
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
