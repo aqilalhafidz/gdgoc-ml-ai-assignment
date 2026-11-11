@@ -19,6 +19,15 @@ Cross-validated macro F1 (stratified 5-fold, repeated over 3 fold seeds, strep c
 
 The ensemble's lead over LightGBM alone is within noise. The compact logistic regression is nearly as accurate and fully interpretable.
 
+## Leaderboard
+
+| Submission | Public score | Private score |
+|---|---|---|
+| `submission_lgbm_catboost.csv` (final ensemble) | 0.72975 | **0.76944** |
+| `submission_lgbm.csv` (LightGBM only) | 0.73108 | 0.74824 |
+
+The final ensemble placed **3rd of 61 on the private leaderboard** (17th of 61 on the public leaderboard). The model was selected by repeated, fully nested cross-validation rather than by public leaderboard score, and the jump from public to private rank is consistent with that choice.
+
 ## Approach
 
 1. **Data quality audit**: keys, class imbalance, train/test time coverage, temporal leakage checks, missing values.
@@ -33,9 +42,9 @@ The ensemble's lead over LightGBM alone is within noise. The compact logistic re
 
 ```
 .
-├── respiratory-infection-diagnosis.ipynb   # full pipeline
+├── respiratory-infection-diagnosis.ipynb  
 ├── requirements.txt
-├── data/                                  
+├── data/                                   
 ├── submissions/                            
 ├── .gitignore
 ├── LICENSE
@@ -51,6 +60,8 @@ pip install -r requirements.txt
 ```
 
 ### Data
+
+The competition dataset is not included in this repository. Download it from the competition page and arrange it like this:
 
 ```
 data/
@@ -79,7 +90,7 @@ data/
 The notebook was developed on Google Colab. To run it locally, change this line in the setup cell:
 
 ```python
-DATA_DIR = "data"
+DATA_DIR = "data"   # originally "/content/drive/MyDrive/gdgoc-ugm"
 ```
 
 and skip the `!pip install` cell if dependencies are already installed. `RUN_TUNING = False` reuses the stored best LightGBM parameters; set it to `True` to rerun the Optuna search (slow).
